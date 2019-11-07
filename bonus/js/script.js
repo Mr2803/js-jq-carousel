@@ -7,46 +7,42 @@ BONUS:
     aggiungere transizioni;
     thumbnails / miniature(navigabili o meno);
     varie ed eventuali che vi possono venire in mente.*/
+    //@ts-check
 
 $(document).ready(function () {
 
+    $(".next").on({
 
-    $(".next").click(prossimaslide);
+        click: function(){
+            var posizioneimg = $(".slider-wrapper .images  img.active");
+            var posizionenav = $(".nav i.active");
+
+            posizioneimg.removeClass("active");
+            posizionenav.removeClass("active");
+            if (posizioneimg.hasClass("last")) {
+                $(".slider-wrapper .images  img.first").addClass("active");
+                $(".nav i.first").addClass("active");
+            } else {
+                //altrimenti passa semplicemente l'active alla prossima
+                posizioneimg.next("img").addClass("active");
+                posizionenav.next("i").addClass("active");
+            }
+
+        },
+        mouseenter: function () {
+            $(this).css("color", "orange")
+        },
+        mouseleave: function () {
+            $(this).css("color", "#565a5c")
+        }
+    
+    });
+    
     
 
-    $(".prev").click(precedenteslide);
+    $(".prev").on({
 
-
-
-
-    // funzioni
-
-    function prossimaslide() {
-      
-
-        var posizioneimg = $(".slider-wrapper .images  img.active");
-        var posizionenav = $(".nav i.active");
-
-        posizioneimg.removeClass("active");
-        posizionenav.removeClass("active");
-
-
-        // se siamo all'utima img dello slider, ritorna ad essere attiva la prima
-        if (posizioneimg.hasClass("last")) {
-            $(".slider-wrapper .images  img.first").addClass("active");
-            $(".nav i.first").addClass("active");
-        } else {
-            //altrimenti passa semplicemente l'active alla prossima
-            posizioneimg.next("img").addClass("active");
-            posizionenav.next("i").addClass("active");
-        }
-
-
-    }
-
-
-    function precedenteslide() {
-
+        click :function() {
         var posizioneimg = $(".slider-wrapper .images  img.active");
         var posizionenav = $(".nav i.active");
 
@@ -62,10 +58,15 @@ $(document).ready(function () {
             posizioneimg.prev("img").addClass("active");
             posizionenav.prev("i").addClass("active");
         }
-
-
+    },
+    mouseenter : function(){
+        $(this).css("color","orange")
+    },
+    mouseleave : function(){
+        $(this).css("color","#565a5c")
     }
 
 
-});
 
+    });
+})
