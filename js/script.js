@@ -1,3 +1,13 @@
+/*
+DESCRIZIONE:
+    RI-Creare lo slideshow / carousel base come fatto in live coding a lezione stamattina.
+BONUS:
+    navigare tramite tastiera;
+    generare contenuti / img(tipo da array nome imgs) + pallini;
+    aggiungere transizioni;
+    thumbnails / miniature(navigabili o meno);
+    varie ed eventuali che vi possono venire in mente.*/
+
 $(document).ready(function () {
 
 
@@ -9,7 +19,9 @@ $(document).ready(function () {
 
 
     // funzioni
+
     function prossimaslide() {
+      
 
         var posizioneimg = $(".slider-wrapper .images  img.active");
         var posizionenav = $(".nav i.active");
