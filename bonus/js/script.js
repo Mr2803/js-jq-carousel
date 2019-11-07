@@ -12,21 +12,24 @@ BONUS:
 $(document).ready(function () {
 
     //navigazione da tastiera
-    $(window).on({
-        keyup: function (j) {
-
-            //console.log(k.keyCode); // Utilizzo questo log per intercettare il keyCode del tasto premuto
-
-            if (j.keyCode == "39") {
-                //console.log("Vado a destra");
-                nextImg();
-            }
-            if (j.keyCode == "37") {
-                //console.log("Vado a sinistra");
-                prevImg();
-            }
+    $(document).keyup(function (j){
+        if (j.keyCode == "39") {
+            nextImg();
+            $(".next").css("color", "orange").fadeOut(200).fadeIn(1,function(){
+                $(this).css("color", "#565a5c")
+            })
+            
         }
-    });
+        if (j.keyCode == "37") {
+            prevImg();
+            $(".prev").css("color", "orange").fadeOut(200).fadeIn(1, function () {
+                $(this).css("color", "#565a5c")
+            });
+        }
+    })  
+
+
+           
     
 
     //Attivo funzione navigazione con click
@@ -61,7 +64,7 @@ $(document).ready(function () {
    
    //FUNZIONI ESTERNE
     function nextImg(){
-        var posizioneimg = $(".slider-wrapper .images  img.active");
+        var posizioneimg = $(".col-12 .images  img.active");
         var posizionenav = $(".nav img.active");
         ;
 
@@ -71,7 +74,7 @@ $(document).ready(function () {
 
 
         if (posizioneimg.hasClass("last")) {
-            $(".slider-wrapper .images  img.first").addClass("active");
+            $(".col-12 .images  img.first").addClass("active");
             $(".nav img.first").addClass("active border");
         } else {
             //altrimenti passa semplicemente l'active alla prossima
@@ -82,7 +85,7 @@ $(document).ready(function () {
     }
 
     function prevImg(){
-        var posizioneimg = $(".slider-wrapper .images  img.active");
+        var posizioneimg = $(".col-12 .images  img.active");
         var posizionenav = $(".nav img.active");
 
         posizioneimg.removeClass("active");
@@ -91,7 +94,7 @@ $(document).ready(function () {
 
         // se siamo alla prima img dello slider, ritorna ad essere attiva l'ultima
         if (posizioneimg.hasClass("first")) {
-            $(".slider-wrapper .images  img.last").addClass("active");
+            $(".col-12 .images  img.last").addClass("active");
             $(".nav img.last").addClass("active border");
         } else {
             //altrimenti passa semplicemente l'active alla prossima
@@ -99,6 +102,8 @@ $(document).ready(function () {
             posizionenav.prev("img").addClass("active border");
         }
     }
+
+    
 
     
 })
