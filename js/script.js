@@ -15,10 +15,12 @@ $(document).ready(function () {
 
     $(".prev").click(precedenteslide);
 
-
+    
 
 
     // funzioni
+
+
 
     function prossimaslide() {
       
