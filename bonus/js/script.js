@@ -35,6 +35,7 @@ $(document).ready(function () {
     //Attivo funzione navigazione con click
     $(".next").click(nextImg);
     $(".prev").click(prevImg);
+    
 
     //Aggiungo dettagli sull'hover con funzione on su Next
     $(".next").on({
@@ -102,6 +103,22 @@ $(document).ready(function () {
             posizionenav.prev("img").addClass("active border");
         }
     }
+
+     /* $(".nav img").click(function(){
+         var posizioneimg = $(".col-12 .images  img.active");
+         var posizionenav = $(".nav img.active");
+
+         posizioneimg.removeClass("active");
+         posizionenav.removeClass("active");
+
+         $(this).addClass("active");
+
+           
+
+       
+         
+     })  */
+        
 
     
 
