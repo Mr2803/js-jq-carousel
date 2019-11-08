@@ -116,7 +116,9 @@ $(document).ready(function () {
        
          
      })  */
-    $(".nav img").click(function () {
+
+     //funzione per rendere cliccabili le anteprime
+    /* $(".nav img").click(function () {
         var ant = $(".nav img");
 
         for(var i=0; i<ant.length;i++){
@@ -127,9 +129,18 @@ $(document).ready(function () {
         }
         $(".nav img.active").removeClass("active border");
         $(this).addClass("active border");
-    } )
+    } ) */
 
-    
+    //Soluzione vista a lezione , il limite è posto dal fatto che devi aggiungere un attributo uguale per gli elementi che vuoi concatenare
+    $(".nav img").click(function () {
+        var clicked = $(this).attr("data-ref");
+        $(".nav img.active").removeClass("active border");
+        $(".images img.active").removeClass("active");
+        $(this).addClass("active border");
+        $("img[data-ref=" + clicked + "]").addClass("active")
+
+
+    })
 
     
 })
