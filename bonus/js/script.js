@@ -12,7 +12,8 @@ BONUS:
 $(document).ready(function () {
 
     //navigazione da tastiera
-    $(document).keyup(function (j){
+    $(document).keydown(function (j){
+        console.log(j.keyCode)
         if (j.keyCode == "39") {
             nextImg();
             $(".next").css("color", "orange").fadeOut(200).fadeIn(1,function(){
@@ -27,11 +28,8 @@ $(document).ready(function () {
             });
         }
     })  
-
-
-           
     
-
+    
     //Attivo funzione navigazione con click
     $(".next").click(nextImg);
     $(".prev").click(prevImg);
@@ -49,7 +47,7 @@ $(document).ready(function () {
     });
     
     
-    //Aggiungo dettagli sull'hover con funzione on su Next
+    //Aggiungo dettagli sull'hover con funzione on su prev
     $(".prev").on({
 
     mouseenter : function(){
@@ -73,7 +71,7 @@ $(document).ready(function () {
         posizionenav.removeClass("active");
         posizionenav.removeClass("border");
 
-
+        // se siamo all'ultima img dello slider, ritorna ad essere attiva la prima
         if (posizioneimg.hasClass("last")) {
             $(".col-12 .images  img.first").addClass("active");
             $(".nav img.first").addClass("active border");
@@ -104,7 +102,7 @@ $(document).ready(function () {
         }
     }
 
-     /* $(".nav img").click(function(){
+     /* 
          var posizioneimg = $(".col-12 .images  img.active");
          var posizionenav = $(".nav img.active");
 
@@ -113,12 +111,23 @@ $(document).ready(function () {
 
          $(this).addClass("active");
 
-           
+           $()
 
        
          
      })  */
-        
+    $(".nav img").click(function () {
+        var ant = $(".nav img");
+
+        for(var i=0; i<ant.length;i++){
+            if($(this).is(ant.eq(i))){
+                $(".images img.active").removeClass("active border");
+                $(".images img").eq(i).addClass("active");
+            }
+        }
+        $(".nav img.active").removeClass("active border");
+        $(this).addClass("active border");
+    } )
 
     
 
